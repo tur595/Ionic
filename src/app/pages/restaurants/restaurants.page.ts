@@ -14,5 +14,9 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
 export class RestaurantsPage implements OnInit {
   constructor(private restaurantsService: RestaurantsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.restaurantsService.getCloseRestaurants().subscribe((res) => {
+      console.log(res);
+    });
+  }
 }
