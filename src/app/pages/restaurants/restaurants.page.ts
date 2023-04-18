@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, LoadingController } from '@ionic/angular';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 @Component({
@@ -12,11 +12,28 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class RestaurantsPage implements OnInit {
-  constructor(private restaurantsService: RestaurantsService) {}
+  restaurants = [];
+
+  constructor(
+    private restaurantsService: RestaurantsService,
+    private loadingCtrl: LoadingController
+  ) {}
 
   ngOnInit() {
+    this.loadRestaurants();
+  }
+
+  async loadRestaurants() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading..',
+      spinner: 'bubbles',
+    });
+    await loading.present();
+
     this.restaurantsService.getCloseRestaurants().subscribe((res) => {
-      console.log(res);
+      loading.dismiss();
+      this.restaurants = [...this.restaurants, ...res.response];
+      console.log(this.restaurants);
     });
   }
 }
