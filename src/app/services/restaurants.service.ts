@@ -16,7 +16,7 @@ export interface ApiResult {
 export class RestaurantsService {
   input = {
     skip: 0,
-    limit: 5,
+    limit: 20,
     latitude: 38.418523,
     longitude: 27.127399,
   };

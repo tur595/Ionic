@@ -34,19 +34,12 @@ export class RestaurantsPage implements OnInit {
       loading.dismiss();
       this.restaurants = [
         ...res.response.map(
-          (item: {
-            id: any;
-            title: any;
-            status: any;
-            images: any[];
-            minOrderPrice: any;
-          }) => {
+          (item: { id: any; title: any; images: any[]; storeInfo: any }) => {
             return {
               id: item.id,
               title: item.title,
-              status: item.status,
               images: item.images,
-              minPrice: item.minOrderPrice,
+              storeInfo: item.storeInfo,
             };
           }
         ),
