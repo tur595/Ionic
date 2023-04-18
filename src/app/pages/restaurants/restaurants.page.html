@@ -1,28 +1,43 @@
 <ion-header>
-  <ion-toolbar color="">
-    <ion-title class="ion-padding">Ana sayfa</ion-title>
+  <ion-toolbar>
+    <ion-title class="header">Ana sayfa</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="searchBar">
   <ion-searchbar
     show-clear-button="always"
     clear-icon="options-outline"
     value="Mekan ara"
     placeholder="Mekan ara"
   ></ion-searchbar>
+
   <ion-list>
+    <h6 class="results">Sonuçlar</h6>
     <ion-item button *ngFor="let item of restaurants">
-      <ion-label>
-        <img [src]="item.images[0]?.base64" />
-        <h2>{{item.title}}</h2>
-        <p>Min. Sipariş Tutarı ₺{{item.storeInfo.minOrderPrice}}</p>
-        <p>3 km yakınında</p>
-        <p>
-          {{item.storeInfo.workingHours.closed ? 'İşletme Kapalı' : 'İşletme
-          Açık'}} {{item.storeInfo.workingHours[0].open}} /
-          {{item.storeInfo.workingHours[0].close}}
-        </p>
+      <ion-label class="container">
+        <div class="top">
+          <img class="image" [src]="item.images[0]?.base64" />
+          <div class="rating">
+            <img src="../assets/icon/star.png" />
+            <p>{{item.storeInfo.rate.toFixed(1)}}</p>
+          </div>
+        </div>
+        <h2 class="title">{{item.title}}</h2>
+        <div class="content">
+          <div class="left">
+            <p>Coffee, Tatlı</p>
+            <p>3 km yakınında</p>
+          </div>
+          <div class="right">
+            <p>Min. Sipariş Tutarı: ₺{{item.storeInfo.minOrderPrice}}</p>
+            <p>
+              {{item.storeInfo.workingHours.closed ? 'İşletme Kapalı' : 'İşletme
+              Açık'}} {{item.storeInfo.workingHours[0].open}} /
+              {{item.storeInfo.workingHours[0].close}}
+            </p>
+          </div>
+        </div>
       </ion-label>
     </ion-item>
   </ion-list>
