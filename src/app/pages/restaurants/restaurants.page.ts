@@ -12,7 +12,7 @@ import { RestaurantsService } from 'src/app/services/restaurants.service';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class RestaurantsPage implements OnInit {
-  restaurants = [];
+  restaurants: any;
 
   constructor(
     private restaurantsService: RestaurantsService,
@@ -32,7 +32,25 @@ export class RestaurantsPage implements OnInit {
 
     this.restaurantsService.getCloseRestaurants().subscribe((res) => {
       loading.dismiss();
-      this.restaurants = [...this.restaurants, ...res.response];
+      this.restaurants = [
+        ...res.response.map(
+          (item: {
+            id: any;
+            title: any;
+            status: any;
+            images: any[];
+            minOrderPrice: any;
+          }) => {
+            return {
+              id: item.id,
+              title: item.title,
+              status: item.status,
+              images: item.images,
+              minPrice: item.minOrderPrice,
+            };
+          }
+        ),
+      ];
       console.log(this.restaurants);
     });
   }
