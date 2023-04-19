@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface ApiResult {
   response: any[];
@@ -31,16 +28,12 @@ export class RestaurantsService {
 
     const header = new HttpHeaders({
       accept: 'application/json',
-      apiKey: 'bW9jay04ODc3NTU2NjExMjEyNGZmZmZmZmJ2',
+      apiKey: `${environment.apiKey}`,
       contentType: 'application/json',
     });
 
-    return this.http.post<ApiResult>(
-      `https://smarty.kerzz.com:4004/api/mock/getFeed`,
-      this.input,
-      {
-        headers: header,
-      }
-    );
+    return this.http.post<ApiResult>(`${environment.baseUrl}`, this.input, {
+      headers: header,
+    });
   }
 }

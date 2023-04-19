@@ -38,9 +38,8 @@ export class RestaurantsPage implements OnInit {
       loading.dismiss();
       this.restaurants.push(
         ...res.response.map(
-          (item: { id: any; title: any; images: any[]; storeInfo: any }) => {
+          (item: { title: any; images: any[]; storeInfo: any }) => {
             return {
-              id: item.id,
               title: item.title,
               images: item.images,
               storeInfo: item.storeInfo,
@@ -48,12 +47,6 @@ export class RestaurantsPage implements OnInit {
           }
         )
       );
-      for (let obj of this.restaurants) {
-        /*         console.log(obj.storeInfo.geoLocation.latitude);
-        console.log(obj.storeInfo.geoLocation.longitude);
-        console.log(this.restaurantsService.input.latitude);
-        console.log(this.restaurantsService.input.longitude); */
-      }
       event?.target.complete();
     });
   }
