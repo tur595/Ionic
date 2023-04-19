@@ -1,6 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="header">Ana sayfa</ion-title>
+  <ion-toolbar class="header">
+    <img
+      style="width: 40px"
+      class="headerLeft"
+      src="../assets/icon/burgerMenu.svg"
+    />
+    <ion-title class="headerCenter">Ana sayfa</ion-title>
+    <div class="headerRight">
+      <img src="../assets/icon/giftIco.svg" alt="" />
+      <img src="../assets/icon/listIco.svg" alt="" />
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -27,7 +36,7 @@
         <div class="content">
           <div class="left">
             <p>Coffee, Tatlı</p>
-            <p>3 km yakınında</p>
+            <p class="distance">3 km yakınında</p>
           </div>
           <div class="right">
             <p>Min. Sipariş Tutarı: ₺{{item.storeInfo.minOrderPrice}}</p>
@@ -41,4 +50,10 @@
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($any($event))">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data.."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

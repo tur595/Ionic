@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 
 export interface ApiResult {
-  response: [];
+  response: any[];
 }
 
 @Injectable({
@@ -23,14 +23,14 @@ export class RestaurantsService {
 
   constructor(private http: HttpClient) {}
 
-  getCloseRestaurants(): Observable<any> {
+  getCloseRestaurants(): Observable<ApiResult> {
     const header = new HttpHeaders({
       accept: 'application/json',
       apiKey: 'bW9jay04ODc3NTU2NjExMjEyNGZmZmZmZmJ2',
       contentType: 'application/json',
     });
     //let body
-    return this.http.post(
+    return this.http.post<ApiResult>(
       `https://smarty.kerzz.com:4004/api/mock/getFeed`,
       this.input,
       {

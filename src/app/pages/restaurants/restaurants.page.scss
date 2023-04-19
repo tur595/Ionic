@@ -1,10 +1,27 @@
+* {
+  font-family: Montserrat !important;
+}
 .right {
   text-align: right;
-  padding-right: 10px;
+  padding-left: 10px;
+  p {
+    color: rgba(238, 238, 238, 0.819);
+    font-size: 11px;
+    font-weight: lighter;
+  }
 }
 .left {
   padding-left: 10px;
   width: 55%;
+  color: rgba(238, 238, 238, 0.819);
+  p {
+    font-size: 11px;
+    font-weight: lighter;
+  }
+}
+
+.distance {
+  color: white;
 }
 
 .title {
@@ -19,12 +36,34 @@
 
 .header {
   text-align: center;
+  font-size: 12px;
+}
+
+.headerCenter,
+.headerRight,
+.headerLeft {
+  display: inline-block;
+  padding: 0rem 0rem;
+}
+
+.headerCenter {
+  float: inline-start;
+  padding-left: 40px;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.headerLeft {
+  float: left;
+}
+
+.headerRight {
+  float: right;
 }
 
 ion-content {
   ion-searchbar {
-    border-radius: 0 0 40px 40px;
-    overflow: hidden;
+    font-size: 5px;
   }
 }
 
@@ -71,5 +110,7 @@ ion-content {
   p {
     padding-top: 2.5px;
     padding-left: 3px;
+    font-size: 12px;
+    font-weight: lighter;
   }
 }
