@@ -3,17 +3,18 @@
 }
 .right {
   text-align: right;
-  padding-left: 10px;
+  padding-right: 10px;
+  width: 50%;
   p {
-    color: rgba(238, 238, 238, 0.819);
+    color: rgba(131, 129, 129, 0.819);
     font-size: 11px;
     font-weight: lighter;
   }
 }
 .left {
   padding-left: 10px;
-  width: 55%;
-  color: rgba(238, 238, 238, 0.819);
+  width: 50%;
+  color: rgba(133, 133, 133, 0.819);
   p {
     font-size: 11px;
     font-weight: lighter;
@@ -21,7 +22,7 @@
 }
 
 .distance {
-  color: white;
+  color: black;
 }
 
 .title {
@@ -76,8 +77,9 @@ ion-content {
 
 .container {
   //color: rgb(60, 60, 60);
-  background-color: rgb(40, 40, 40);
+  box-shadow: 4px 4px 4px 4px #8888880a;
   border-radius: 10px;
+  border-bottom: none;
 }
 
 .content {

@@ -24,12 +24,17 @@ export class RestaurantsService {
   constructor(private http: HttpClient) {}
 
   getCloseRestaurants(): Observable<ApiResult> {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.input.latitude = position.coords.latitude;
+      this.input.longitude = position.coords.longitude;
+    });
+
     const header = new HttpHeaders({
       accept: 'application/json',
       apiKey: 'bW9jay04ODc3NTU2NjExMjEyNGZmZmZmZmJ2',
       contentType: 'application/json',
     });
-    //let body
+
     return this.http.post<ApiResult>(
       `https://smarty.kerzz.com:4004/api/mock/getFeed`,
       this.input,

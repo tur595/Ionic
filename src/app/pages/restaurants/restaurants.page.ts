@@ -19,7 +19,7 @@ export class RestaurantsPage implements OnInit {
   restaurants: any = [];
 
   constructor(
-    private restaurantsService: RestaurantsService,
+    public restaurantsService: RestaurantsService,
     private loadingCtrl: LoadingController
   ) {}
 
@@ -48,7 +48,12 @@ export class RestaurantsPage implements OnInit {
           }
         )
       );
-      console.log(this.restaurants);
+      for (let obj of this.restaurants) {
+        /*         console.log(obj.storeInfo.geoLocation.latitude);
+        console.log(obj.storeInfo.geoLocation.longitude);
+        console.log(this.restaurantsService.input.latitude);
+        console.log(this.restaurantsService.input.longitude); */
+      }
       event?.target.complete();
     });
   }
